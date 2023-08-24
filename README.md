@@ -1,14 +1,15 @@
 # dedockerfiles
 
-Collection of dockerfiles for dedoc group projects. Now available next dockerfiles:
+Collection of dockerfiles for dedoc group projects. The following dockerfiles are available:
 
 * `dedoc_p3.9_baseimg.Dockerfile` — [base image](https://hub.docker.com/r/dedocproject/baseimg) for [dedoc](https://github.com/ispras/dedoc) project, include
-`python3.9`, secure `pytorch1.11.0`, `tesseract-ocr 5.0`, `libreoffice` and some python tools in order to reduce time for its building in the main dockerfile
+`python3.9`, secure `torch1.11.0`, `torchvision0.12.0`, `tesseract-ocr 5.0`, `libreoffice` and some python tools in order to reduce time for its building in the main dockerfile
 
 * `secure_torch_p3.9_baseimg.Dockerfile` — [base image](https://hub.docker.com/repository/docker/dedocproject/secure_torch_p3.9_baseimg) for ML projects based
-on `python3.9` and secure `pytorch1.11.0`
+on `python3.9` and secure `torch1.11.0` and `torchvision0.12.0`
 
-* `secure_torch1.11.0_p3.9.Dockerfile` — image for building secure `pytorch`, `torchvision`, `torchdata` and `torchtext` from sources
+* `secure_torch1.11.0_p3.9.Dockerfile` — image for building secure `torch-1.11.0`, `torchvision-0.12.0`, `torchdata-0.3.0` and `torchtext-0.12.0` from sources
+with `python3.9`
 
 ## Build the new image locally 
 
@@ -29,4 +30,27 @@ docker login -u dedocproject -p <password>
 docker tag dedocproject/<image_name>:version_$VERSION_TAG dedocproject/<image_name>:latest
 docker push dedocproject/<image_name>:version_$VERSION_TAG
 docker push dedocproject/<image_name>:latest
+```
+
+## Get torch wheels from docker
+
+Build pytorch image and run it in the first terminal:
+```shell
+docker build -t secure_torch -f secure_torch1.11.0_p3.9.Dockerfile .
+docker run secure_torch
+```
+
+Open second terminal and view running container identifier:
+```shell
+docker ps
+CONTAINER ID   IMAGE          COMMAND                  CREATED         STATUS                  PORTS     NAMES
+35faf7265eca   secure_torch   "/bin/sh -c 'sleep 3…"   3 seconds ago   Up Less than a second             inspiring_brahmagupta
+```
+
+Copy wheel files from running container:
+```shell
+docker cp 35faf7265eca:/pytorch/dist/torch-1.11.0a0+git137096a-cp39-cp39-linux_x86_64.whl .
+docker cp 35faf7265eca:/torchvision/dist/torchvision-0.12.0a0+9b5a3fe-cp39-cp39-linux_x86_64.whl .
+docker cp 35faf7265eca:/torchdata/dist/torchdata-0.3.0a0+fbf097d-py3-none-any.whl .
+docker cp 35faf7265eca:/torchtext/dist/torchtext-0.12.0a0+d7a34d6-cp39-cp39-linux_x86_64.whl .
 ```
