@@ -23,14 +23,6 @@ RUN add-apt-repository ppa:deadsnakes/ppa && apt update && apt install -y python
     apt clean autoclean && apt autoremove --yes && rm -rf /var/lib/{apt,dpkg,cache,log}/
 ENV OPENCV_IO_ENABLE_JASPER "true"
 
-# install doctr
-# ATTENTION: don't change an order of pip's package install here, otherwise you get conflicts
-# RUN pip install setuptools==60.10.0 cffi==1.15.0
-# RUN pip install python-doctr==0.5.1
-# We decided to stop using Doctr. If you need it, uncomment two lines above and comment one line below to make docker image with Doctr.
-
-RUN pip install --no-cache-dir pyclipper==1.3.0.post4 shapely==2.0.1 Pillow==9.2.0
-
 # install secure torch
 RUN pip3 install --no-cache-dir https://github.com/ispras/dedockerfiles/raw/master/wheels/torch-1.11.0a0+git137096a-cp39-cp39-linux_x86_64.whl && \
     pip3 install --no-cache-dir https://github.com/ispras/dedockerfiles/raw/master/wheels/torchvision-0.12.0a0%2B9b5a3fe-cp39-cp39-linux_x86_64.whl
