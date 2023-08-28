@@ -12,7 +12,5 @@ ENV OPENCV_IO_ENABLE_JASPER "true"
 
 # install secure torch and its dependencies
 RUN DEBIAN_FRONTEND=noninteractive apt install -y --force-yes mpich intel-mkl
-ADD "wheels/torch-1.11.0a0+git137096a-cp39-cp39-linux_x86_64.whl" .
-RUN pip3 install torch-1.11.0a0+git137096a-cp39-cp39-linux_x86_64.whl
-ADD "wheels/torchvision-0.12.0a0+9b5a3fe-cp39-cp39-linux_x86_64.whl" .
-RUN pip3 install torchvision-0.12.0a0+9b5a3fe-cp39-cp39-linux_x86_64.whl
+RUN pip3 install --no-cache-dir https://github.com/ispras/dedockerfiles/raw/master/wheels/torch-1.11.0a0+git137096a-cp39-cp39-linux_x86_64.whl && \
+    pip3 install --no-cache-dir https://github.com/ispras/dedockerfiles/raw/master/wheels/torchvision-0.12.0a0%2B9b5a3fe-cp39-cp39-linux_x86_64.whl
