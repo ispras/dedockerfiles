@@ -2,10 +2,10 @@
 
 Collection of dockerfiles for dedoc group projects. The following dockerfiles are available:
 
-* `dedoc_p3.9_baseimg.Dockerfile` — [base image](https://hub.docker.com/r/dedocproject/baseimg) for [dedoc](https://github.com/ispras/dedoc) project, include
+* `dedoc_p3.9_base.Dockerfile` — [base image](https://hub.docker.com/r/dedocproject/dedoc_p3.9_base) for [dedoc](https://github.com/ispras/dedoc) project, include
 `python3.9`, secure `torch-1.11.0`, `torchvision-0.12.0`, `tesseract-ocr 5.0`, `libreoffice` and some python tools in order to reduce time for its building in the main dockerfile
 
-* `secure_torch_p3.9_baseimg.Dockerfile` — [base image](https://hub.docker.com/repository/docker/dedocproject/secure_torch_p3.9_baseimg) for ML projects based
+* `secure_torch_p3.9_base.Dockerfile` — [base image](https://hub.docker.com/repository/docker/dedocproject/secure_torch_p3.9_base) for ML projects based
 on `python3.9` and secure `torch-1.11.0` and `torchvision-0.12.0`
 
 * `secure_torch1.11.0_p3.9.Dockerfile` — image for building secure `torch-1.11.0`, `torchvision-0.12.0`, `torchdata-0.3.0` and `torchtext-0.12.0` from sources
