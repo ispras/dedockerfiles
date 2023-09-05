@@ -8,8 +8,12 @@ Collection of dockerfiles for dedoc group projects. The following dockerfiles ar
 * `secure_torch_p3.9_base.Dockerfile` — [base image](https://hub.docker.com/repository/docker/dedocproject/secure_torch_p3.9_base) for ML projects based
 on `python3.9` and secure `torch-1.11.0` and `torchvision-0.12.0`
 
+* `secure_torch1.11.0_p3.8.Dockerfile` — image for building secure `torch-1.11.0`, `torchvision-0.12.0`, `torchdata-0.3.0` and `torchtext-0.12.0` from sources
+with `python3.8`
+
 * `secure_torch1.11.0_p3.9.Dockerfile` — image for building secure `torch-1.11.0`, `torchvision-0.12.0`, `torchdata-0.3.0` and `torchtext-0.12.0` from sources
 with `python3.9`
+
 
 ## Build the new image locally 
 
